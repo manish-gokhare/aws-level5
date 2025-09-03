@@ -1,1 +1,22 @@
+https://cognizant.udemy.com/course/aws-solutions-architect-associate-saa-c03-training-2024/learn/lecture/51426785#reviews
+Amazon API Gateway acts as a “front door” for applications to access data, business logic, or functionality from backend services, such as AWS Lambda, EC2, or any web application.
+
+API - Application Programming Interface
+
+Users interact with AWS API Gateway by sending HTTP requests (such as GET, POST, PUT, DELETE) to API endpoints defined in the service
+User ---> API Gateway ---> EC2/Lambda
+
+API Gateway acts as a centralized “front door” that receives these requests, applies access controls, routing, and authentication, then forwards the requests to backend AWS resources 
+or services, such as EC2, Lambda, or databases.
+
+Get started:
+https://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started.html
+
+API gateway helps in creating,publishing, maintaining, monitoring and  securing various API for the business.
+
+Types of API
+GET
+PUT
+DELETE
+PATCH
 
