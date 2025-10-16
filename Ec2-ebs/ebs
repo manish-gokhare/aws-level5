@@ -1,0 +1,3 @@
+> Create EC2
+> Create EBS Volume in the same region, same availability zone
+> Attach EBS to Ec2 instance
