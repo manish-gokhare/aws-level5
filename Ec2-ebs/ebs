@@ -1,3 +1,41 @@
 > Create EC2
 > Create EBS Volume in the same region, same availability zone
 > Attach EBS to Ec2 instance
+> Run this command to list all block devices
+#lsblk
+> Before formatting, verify the volume content: If it shows `/dev/xvdf: data`, it means the volume is empty and safe to format
+sudo file -s /dev/xvdf
+> Format EBS Volume
+
+sudo mkfs -t xfs /dev/xvdf
+> create mount dir
+sudo mkdir /data
+
+> Mount the volume
+
+sudo mount /dev/xvdf /data
+> Make the mount persistenance - get the UUID and update in /etc/fstab
+sudo blkid /dev/xvdf
+UUID=<your-volume-uuid>  /data  xfs  defaults,nofail  0  2
+
+> mount -a
+---
+[ec2-user@ip-172-31-29-20 ~]$ lsblk
+NAME          MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
+nvme0n1       259:0    0   8G  0 disk 
+├─nvme0n1p1   259:1    0   8G  0 part /
+├─nvme0n1p127 259:2    0   1M  0 part 
+└─nvme0n1p128 259:3    0  10M  0 part /boot/efi
+nvme1n1       259:4    0   2G  0 disk 
+[ec2-user@ip-172-31-29-20 ~]$ sudo file -s /dev/nvme1n1
+/dev/nvme1n1: data
+[ec2-user@ip-172-31-29-20 ~]$ sudo mkfs -t xfs /dev/nvme1n1
+[ec2-user@ip-172-31-29-20 ~]$ sudo mkdir /data
+[ec2-user@ip-172-31-29-20 ~]$ sudo mount /dev/nvme1n1 /data
+[ec2-user@ip-172-31-29-20 data]$ df -h /data
+
+
+
+
+
+
